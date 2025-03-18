@@ -5,6 +5,16 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
+const Schema = mongoose.Schema;
+
+const personSchema = new Schema({
+  name: { type: String, required: true },
+  age: Number,
+  favoriteFoods: [String]
+});
+
+const Person = mongoose.model('Person', personSchema);
+
 let Person;
 
 const createAndSavePerson = (done) => {
